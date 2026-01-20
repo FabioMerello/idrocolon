@@ -5,6 +5,9 @@ body {
     color: #333;
     scroll-behavior: smooth;
 }
+html, body {
+    overflow-x: hidden;
+}
 
 #servizi, #progetti, #contatti, #social {
     padding-top: 150px;
@@ -292,7 +295,7 @@ body {
     font-size: 1rem;
     font-weight: 600;
     background: #0077b6;
-    color: #023e8a;
+    color: #ffffff;
     border-radius: 30px;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -357,68 +360,93 @@ body {
     }
 }
 
-.servizi-section {
-    background-color: #ffffff;
-    padding: 4rem 1.5rem;
+/* RESET FONDAMENTALE */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
+/* SECTION */
+.info-section {
+    background-color: #ffffff;
+    padding: 5rem 2.5rem; /* più spazio ai bordi */
+}
+
+/* TITOLO */
 .section-title {
     text-align: center;
     font-size: 2.5rem;
     color: #0077b6;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
+/* BLOCCO SERVIZIO */
 .servizio {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    margin-bottom: 3rem;
+    gap: 3rem; /* più respiro tra immagine e testo */
+    margin: 0 auto 4rem auto;
+    max-width: 1200px; /* centra e limita larghezza */
     flex-wrap: wrap;
 }
 
+/* INVERSIONE */
 .servizio.reverse {
     flex-direction: row-reverse;
 }
 
+/* IMMAGINE */
 .servizio-img {
-    flex: 1;
-    min-width: 300px;
+    flex: 1 1 0;
+    min-width: 0; /* chiave anti-overflow */
+    display: flex;
+    justify-content: center;
 }
 
 .servizio-img img {
     width: 100%;
-    border-radius: 10px;
+    max-width: 520px; /* evita immagini troppo grandi */
+    border-radius: 12px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
+/* TESTO */
 .servizio-testo {
-    flex: 1;
-    min-width: 280px;
+    flex: 1 1 0;
+    min-width: 0; /* chiave anti-overflow */
 }
 
 .servizio-testo h3 {
     color: #0077b6;
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
 }
 
 .servizio-testo p {
     color: #023e8a;
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    line-height: 1.7;
 }
 
-/* Mobile adjustments */
+/* MOBILE */
 @media (max-width: 768px) {
-    .servizio, .servizio.reverse {
+    .info-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .servizio,
+    .servizio.reverse {
         flex-direction: column;
         text-align: center;
+        gap: 2rem;
     }
-    .servizio-img, .servizio-testo {
-        width: 100%;
+
+    .servizio-img img {
+        max-width: 100%;
     }
 }
+
 
 .icon-box {
     font-size: 2.5rem;
@@ -428,74 +456,174 @@ body {
 
 /* video */
 .video-section {
-    padding: 2rem 1rem;
+    padding: 3rem 1.5rem;
     background-color: #ffffff;
     text-align: center;
 }
 
 .video-section .section-title {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     font-size: 2rem;
-    color: #0077b6; /* puoi adattare il colore */
+    color: #0077b6;
 }
 
+/* wrapper video */
 .video-wrapper {
     position: relative;
     width: 100%;
-    max-width: 900px; /* max larghezza video */
+    max-width: 760px; /* equilibrio desktop */
     margin: 0 auto;
-    padding-top: 56.25%; /* rapporto 16:9 */
+    aspect-ratio: 16 / 9; /* più pulito del padding hack */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
 }
 
+/* iframe */
 .video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     border: 0;
-    border-radius: 8px;
 }
 
 /* Recensioni */
+.testimonials-section {
+    padding: 6rem 1.5rem;
+    background-color: #ffffff;
+    color: #333;
+}
 
-.reviews {
-    padding: 50px 20px;
-    background: #ffffff;
+.testimonials-section .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+}
+
+.testimonials-section h2 {
+    font-size: 2.8rem;
+    background: #0077b6;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.testimonials-section p {
+    color: #555;
+    margin-bottom: 3rem;
     text-align: center;
 }
 
-.reviews-grid {
+.testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
 }
 
-.review-card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 25px 20px;
-    box-shadow: 0 6px 15px rgba(240,128,128,0.3);
-    font-style: italic;
-    color: #023e8a;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* CARD */
+.testimonial-card {
+    background: rgb(119, 198, 237);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.4);
+    position: relative;
+    overflow: hidden;
+
+    /* FLEX COLUMN PER ALLINEARE IL NOME IN BASSO */
+    display: flex;
+    flex-direction: column;
+
+    /* OMBRA BASE */
+    box-shadow:
+            0 10px 25px rgba(0, 0, 0, 0.12),
+            0 4px 10px rgba(0, 0, 0, 0.08);
+
+    transition:
+            transform 0.4s ease,
+            box-shadow 0.4s ease;
 }
 
-.review-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(240,128,128,0.5);
+/* HOVER CARD */
+.testimonial-card:hover {
+    transform: translateY(-12px) scale(1.03);
+
+    /* OMBRA INTENSA */
+    box-shadow:
+            0 30px 60px rgba(0, 0, 0, 0.25),
+            0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
-.review-card span {
-    display: block;
-    margin-top: 15px;
-    font-weight: 600;
-    color: #023e8a;
+.testimonial-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
 }
+
+.testimonial-card:hover::before {
+    transform: translateX(100%);
+}
+
+/* TESTO RECENSIONE */
+.testimonial-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* NOME PAZIENTE – BLOCCATO IN BASSO */
+.testimonial-card h4 {
+    font-size: 1.2rem;
+    margin-top: auto; /* 🔑 mantiene il nome in basso */
+    margin-bottom: 0.3rem;
+}
+
+/* RUOLO / DETTAGLIO */
+.testimonial-card span {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* SEZIONE RATING */
+.testimonial-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-rating .google-logo {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* ANIMAZIONE SU TOUCH DEVICES */
+@media (hover: none) {
+    .testimonial-card:hover {
+        transform: translateY(0) scale(1);
+    }
+
+    .testimonial-card[data-aos] {
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE – TESTI LUNGHI */
+@media (max-width: 480px) {
+    .testimonials-section h2 {
+        font-size: 2rem;
+    }
+
+    .testimonial-card p {
+        font-size: 0.95rem;
+    }
+}
+
 
 /* Sezione contatti */
 .cta {
@@ -763,6 +891,7 @@ body {
     border-radius: 8px;
     display: block;
 }
+
 
 
 .whatsapp {
