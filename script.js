@@ -45,13 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 navbar.classList.remove('scrolled');
                 navbar.classList.add('transparent');
             }
-
-            // Mostra/Nascondi navbar
-            if (currentScroll > lastScrollY && currentScroll > 100) {
-                navbar.style.top = '-120px'; // scroll verso il basso → nascondi
-            } else {
-                navbar.style.top = '0'; // scroll verso l’alto → mostra
-            }
         }
 
         lastScrollY = currentScroll;
