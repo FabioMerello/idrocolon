@@ -468,23 +468,55 @@ html, body {
 }
 
 /* wrapper video */
+.video-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    width: 80%;
+    margin:auto;
+    flex-wrap: wrap; /* fa andare i video su più righe su mobile */
+}
+
 .video-wrapper {
     position: relative;
     width: 100%;
-    max-width: 760px; /* equilibrio desktop */
-    margin: 0 auto;
-    aspect-ratio: 16 / 9; /* più pulito del padding hack */
+    max-width: 480px; /* ciascun video non supera questa larghezza */
+    aspect-ratio: 16 / 9;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     overflow: hidden;
+    
 }
-
-/* iframe */
+.video-wrapper video,
 .video-wrapper iframe {
     width: 100%;
     height: 100%;
-    border: 0;
+    
 }
+
+.video-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+.video-placeholder h3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.video-placeholder p {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
 
 /* Recensioni */
 .testimonials-section {
@@ -521,7 +553,7 @@ html, body {
 
 /* CARD */
 .testimonial-card {
-    background: rgb(119, 198, 237);
+    background: #f0f8ff;
     border-radius: 20px;
     padding: 2rem;
     text-align: center;
@@ -785,13 +817,13 @@ html, body {
     border-radius: 50px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(26, 188, 156, 0.5);
+    box-shadow: 0 4px 8px #0077b680;
 }
 
 .contact-form button:hover {
-    background-color: #17a589;
+    background-color: #0077b6;
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(23, 165, 137, 0.7);
+    box-shadow: 0 6px 12px #0077b6b7;
 }
 
 /* Responsive mobile */
@@ -878,7 +910,7 @@ html, body {
 .map-container {
     width: 90%;
     max-width: 920px;
-    background: #023e8a;
+    background: #f0f8ff;
     padding: 1rem;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(62, 26, 26, 0.5);

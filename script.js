@@ -58,6 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const mapContainer = document.getElementById("map-container");
     const videoContainer = document.getElementById("video-container");
 
+    const videoTrattamentoColon = document.getElementById("video-trattamento-colon");
+    const videoFeciESalute = document.getElementById("video-feci-e-salute");    
+
     const mapIframe = `
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2850.0952176722258!2d8.898256799999999!3d44.410691799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d341833447c765%3A0x5c4d059a1b115f1d!2sIdrocolonterapia%20Genova!5e0!3m2!1sit!2sit!4v1754144924669!5m2!1sit!2sit"
@@ -79,10 +82,24 @@ document.addEventListener("DOMContentLoaded", () => {
         </iframe>
     `;
 
+    const videoIframeFeS = `
+    <video 
+        controls 
+        muted 
+        loop
+        loading="lazy">
+        <source src="idrocolon-feci-e-salute.mp4" type="video/mp4">
+        Il tuo browser non supporta il video HTML5.
+    </video>
+`;
+
     function loadThirdPartyContent() {
-        if (mapContainer) mapContainer.innerHTML = mapIframe;
-        if (videoContainer) videoContainer.innerHTML = videoIframe;
+    if (mapContainer) mapContainer.innerHTML = mapIframe;
+
+    if (videoTrattamentoColon) videoTrattamentoColon.innerHTML = videoIframe;
+    if (videoFeciESalute) videoFeciESalute.innerHTML = videoIframeFeS;
     }
+
 
     if (localStorage.getItem("cookiesAccepted") === "true") {
         loadThirdPartyContent();
