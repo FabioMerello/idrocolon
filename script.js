@@ -59,7 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const videoContainer = document.getElementById("video-container");
 
     const videoTrattamentoColon = document.getElementById("video-trattamento-colon");
-    const videoFeciESalute = document.getElementById("video-feci-e-salute");    
+    const videoFeciESalute = document.getElementById("video-feci-e-salute");
+    const videoSistemaDigestivo = document.getElementById("video-sistema-digestivo");    
 
     const mapIframe = `
         <iframe
@@ -91,13 +92,25 @@ document.addEventListener("DOMContentLoaded", () => {
         <source src="idrocolon-feci-e-salute.mp4" type="video/mp4">
         Il tuo browser non supporta il video HTML5.
     </video>
-`;
+    `;
+
+    const videoIframeSisDig = `
+    <video 
+        controls 
+        muted 
+        loop
+        loading="lazy">
+        <source src="sistema-digestivo.mov" type="video/mp4">
+        Il tuo browser non supporta il video HTML5.
+    </video>
+    `;
 
     function loadThirdPartyContent() {
     if (mapContainer) mapContainer.innerHTML = mapIframe;
 
     if (videoTrattamentoColon) videoTrattamentoColon.innerHTML = videoIframe;
     if (videoFeciESalute) videoFeciESalute.innerHTML = videoIframeFeS;
+    if (videoSistemaDigestivo) videoSistemaDigestivo.innerHTML = videoIframeSisDig;
     }
 
 
